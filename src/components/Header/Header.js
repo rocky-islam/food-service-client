@@ -1,15 +1,37 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/images/foodServiceLogo.png'
+import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Header = () => {
+    const { user, logOut } = useContext(AuthContext);
+
+    // logout
+     const handleLogOut = () => {
+       logOut()
+         .then(() => {})
+         .catch((error) => console.error(error));
+     };
 
     const menuItems = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/blog'>Blog</Link></li>
+        
+        
+        {
+            user?.uid ?
+            <li onClick={handleLogOut}><Link>Log Out</Link></li>
+            :
+            <>
+            <li><Link to='/login'>Log In</Link></li>
+            <li><Link to='/signup'>Sign Up</Link></li>
+            </>
+        }
+        
     </>
     return (
-      <div className='mx-4 mb-8'>
+      <div className="mx-4 mb-8">
         <div className="navbar bg-base-100 ">
           <div className="navbar-start">
             <div className="dropdown">
@@ -45,9 +67,16 @@ const Header = () => {
             <ul className="menu menu-horizontal p-0">{menuItems}</ul>
           </div>
           <div className="navbar-end">
-            <a href="/" className="btn">
-              Get started
-            </a>
+            <div className="avatar">
+              <div className="w-9 rounded-full ring ring-orange-500 ring-offset-base-100 ring-offset-2">
+                {
+                    user?.photoURL ?
+                    <img src={user?.photoURL} alt='' />
+                    :
+                    <FaUser size={40}></FaUser>
+                }
+              </div>
+            </div>
           </div>
         </div>
       </div>

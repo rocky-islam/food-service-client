@@ -1,15 +1,31 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import loginLogo from '../../assets/images/sign-up.gif'
+import { FaGoogle } from "react-icons/fa";
+import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Login = () => {
+    const { signIn, providerLogin } = useContext(AuthContext);
     const handleLogin = event =>{
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
         console.log(email, password);
+
+        signIn(email, password)
+        .then(result =>{
+            const user = result.user;
+            console.log(user);
+            form.reset();
+            
+        })
+        .catch(error => console.error(error));
         
     }
+
+    // google login
+
     return (
       <div>
         <h1 className="text-4xl text-center font-semibold text-orange-500">
@@ -56,6 +72,10 @@ const Login = () => {
                     <input type="submit" value="Login" className="btn btn-primary" />
                 </div>
               </form>
+              <p className='text-center mb-4'>New to Food-Service Please <Link to='/signup' className='text-orange-500'>Sign Up</Link></p>
+              <div className='flex justify-center my-4'>
+                <p className='btn btn-outline btn-error w-1/2'><FaGoogle className='mx-2 text-primary'></FaGoogle> LogIn With Google</p>
+              </div>
             </div>
           </div>
         </div>
