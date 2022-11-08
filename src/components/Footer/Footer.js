@@ -16,7 +16,7 @@ const Footer = () => {
             </img>
             <p className="font-bold">
               Food Service Ltd. <br />
-              Providing reliable tech since 1992
+              Providing Food Services since 2022
             </p>
             <p>Copyright © 2022 - All right reserved</p>
           </div>
