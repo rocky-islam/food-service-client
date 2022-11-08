@@ -5,6 +5,7 @@ import chicken from '../../assets/images/chicken.jpg'
 import { Fade } from "react-reveal";
 import Wobble from "react-reveal/Wobble";
 import Jello from "react-reveal/Jello";
+import Services from '../Services/Services';
 
 
 const Home = () => {
@@ -47,6 +48,9 @@ const Home = () => {
             </div>
           </div>
         </div>
+        {/* services load */}
+        <Services></Services>
+        {/* services load */}
         {/* carousel */}
         <div className="hero md:my-12">
           <div className="hero-content flex-col lg:flex-row-reverse">
