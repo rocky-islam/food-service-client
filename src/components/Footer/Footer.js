@@ -15,7 +15,7 @@ const Footer = () => {
             >
             </img>
             <p className="font-bold">
-              ACME Industries Ltd. <br />
+              Food Service Ltd. <br />
               Providing reliable tech since 1992
             </p>
             <p>Copyright © 2022 - All right reserved</p>
