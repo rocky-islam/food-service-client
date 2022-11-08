@@ -175,7 +175,7 @@ const Home = () => {
                     time, the earth needs the sauce of the rhoncus, let it be as
                     free as ever.
                   </p>
-                  <div className="flex justify-between">
+                  <div className="flex md:justify-between">
                     <div>
                       <p>
                         <img
@@ -183,8 +183,8 @@ const Home = () => {
                           alt="tandoori"
                         />
                       </p>
-                      <p className="text-4xl font-serif">170</p>
-                      <p className="text-xl font-serif">Tandoori</p>
+                      <p className="md:text-4xl font-serif">170</p>
+                      <p className="md:text-xl font-serif">Tandoori</p>
                     </div>
                     <div>
                       <p>
@@ -193,8 +193,8 @@ const Home = () => {
                           alt="Lollipop"
                         />
                       </p>
-                      <p className="text-4xl font-serif">524</p>
-                      <p className="text-xl font-serif">Lollipop</p>
+                      <p className="md:text-4xl font-serif">524</p>
+                      <p className="md:text-xl font-serif">Lollipop</p>
                     </div>
                     <div>
                       <p>
@@ -203,8 +203,8 @@ const Home = () => {
                           alt="Breast"
                         />
                       </p>
-                      <p className="text-4xl font-serif">175</p>
-                      <p className="text-xl font-serif">Breast</p>
+                      <p className="md:text-4xl font-serif">175</p>
+                      <p className="md:text-xl font-serif">Breast</p>
                     </div>
                     <div>
                       <p>
@@ -213,8 +213,8 @@ const Home = () => {
                           alt="Strips"
                         />
                       </p>
-                      <p className="text-4xl font-serif">300</p>
-                      <p className="text-xl font-serif">Strips</p>
+                      <p className="md:text-4xl font-serif">300</p>
+                      <p className="md:text-xl font-serif">Strips</p>
                     </div>
                   </div>
                 </Fade>

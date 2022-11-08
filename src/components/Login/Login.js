@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import loginLogo from '../../assets/images/sign-up.gif'
 import { FaGoogle } from "react-icons/fa";
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import { GoogleAuthProvider } from 'firebase/auth';
 
 const Login = () => {
     const { signIn, providerLogin } = useContext(AuthContext);
@@ -17,14 +18,22 @@ const Login = () => {
         .then(result =>{
             const user = result.user;
             console.log(user);
-            form.reset();
-            
+            form.reset();   
         })
-        .catch(error => console.error(error));
-        
+        .catch(error => console.error(error));   
     }
 
     // google login
+     const googleProvider = new GoogleAuthProvider();
+
+     const handleGoogleSignIn = () => {
+       providerLogin(googleProvider)
+         .then((result) => {
+           const user = result.user;
+           console.log(user);
+         })
+         .catch((error) => console.error(error));
+     };
 
     return (
       <div>
@@ -74,7 +83,7 @@ const Login = () => {
               </form>
               <p className='text-center mb-4'>New to Food-Service Please <Link to='/signup' className='text-orange-500'>Sign Up</Link></p>
               <div className='flex justify-center my-4'>
-                <p className='btn btn-outline btn-error w-1/2'><FaGoogle className='mx-2 text-primary'></FaGoogle> LogIn With Google</p>
+                <p onClick={handleGoogleSignIn} className='btn btn-outline btn-error w-1/2'><FaGoogle className='mx-2 text-primary'></FaGoogle> LogIn With Google</p>
               </div>
             </div>
           </div>
