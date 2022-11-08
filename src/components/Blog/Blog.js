@@ -20,7 +20,7 @@ const Blog = () => {
         </div>
         <div>
           <div className="flex justify-center">
-            <div className=" border-8 border-lime-600 rounded-lg w-3/4 p-4">
+            <div className=" border-4 border-lime-600 rounded-lg w-3/4 p-4">
               <div className="my-4">
                 <h1 className="text-xl bg-lime-400 p-3 rounded font-semibold">
                   Q1. Difference between SQL and NoSQL{" "}
