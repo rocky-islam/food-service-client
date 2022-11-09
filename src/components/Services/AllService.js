@@ -17,7 +17,7 @@ const AllService = () => {
         console.log(title, photoURL, price, rating, description);
         const services ={
             title: title,
-            photoURL: photoURL,
+            img: photoURL,
             price: price,
             rating: rating,
             description: description
