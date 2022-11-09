@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import Swal from "sweetalert2";
 
 const Review = () => {
     const {user} = useContext(AuthContext)
@@ -24,9 +25,26 @@ const Review = () => {
             userPhoto: photo,
             rating,
             message
-
         }
         
+        fetch("http://localhost:5000/reviews",{
+            method: 'POST',
+            headers:{
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(review)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            if(data.acknowledged){
+                Swal.fire("Review Placed done!", "", "success");
+                form.reset();
+            }
+        })
+        .catch(err => console.error(err));
+
+
     }
 
     return (
@@ -97,6 +115,7 @@ const Review = () => {
                         name="rating"
                         placeholder="Rating"
                         className="input input-bordered input-primary w-full "
+                        required
                       />
                     </div>
                     <div className="form-control">
@@ -108,6 +127,7 @@ const Review = () => {
                         name="review"
                         placeholder="Your Review"
                         className="textarea textarea-bordered textarea-primary md:h-24 w-full"
+                        required
                       />
                     </div>
                     <button type="submit" className="btn my-4 px-5">

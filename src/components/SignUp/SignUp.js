@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 import loginLogo from "../../assets/images/sign-up.gif";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 
@@ -19,6 +20,14 @@ const SignUp = () => {
         const user = result.user;
         console.log(user);
         handleUpdateUserProfile(name, photoURL);
+        Swal.fire({
+          position: "top-center",
+          icon: "success",
+          title: "Sign Up Successful",
+          showConfirmButton: true,
+          
+        });
+        form.reset();
     })
     .catch(err => console.error(err))
 
