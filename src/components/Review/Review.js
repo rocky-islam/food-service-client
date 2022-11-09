@@ -11,6 +11,7 @@ const Review = () => {
         event.preventDefault();
         const form =event.target;
         const name = user?.displayName || 'N/A';
+        const email = user?.email || 'N/A';
         const photo = user?.photoURL || 'N/A';
         const rating = form.rating.value;
         const message = form.review.value;
@@ -22,6 +23,7 @@ const Review = () => {
             serviceName: title,
             price,
             user: name,
+            email: email,
             userPhoto: photo,
             rating,
             message

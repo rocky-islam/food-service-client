@@ -22,7 +22,10 @@ const Header = () => {
         
         {
             user?.uid ?
+            <>
+            <li><Link to='/reviews'>My ReViews</Link></li>
             <li onClick={handleLogOut}><Link>Log Out</Link></li>
+            </>
             :
             <>
             <li><Link to='/login'>Log In</Link></li>

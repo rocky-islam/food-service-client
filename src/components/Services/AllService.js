@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 import ServiceCard from './ServiceCard';
 
 const AllService = () => {
@@ -31,7 +32,19 @@ const AllService = () => {
             body: JSON.stringify(services)
         })
         .then(res => res.json())
-        .then(data => console.log(data))
+        .then(data => {
+            console.log(data);
+            if (data.acknowledged) {
+                Swal.fire({
+                  position: "top-center",
+                  icon: "success",
+                  title: "Service Created Successful",
+                  showConfirmButton: true,
+
+                });
+                form.reset();
+            }
+        })
         
     }
 
@@ -40,7 +53,7 @@ const AllService = () => {
       fetch("http://localhost:5000/services")
         .then((res) => res.json())
         .then((data) => setServices(data));
-    }, []);
+    }, [services]);
 
     return (
       <div>
