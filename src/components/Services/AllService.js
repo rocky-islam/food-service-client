@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import ServiceCard from './ServiceCard';
 
 const AllService = () => {
-
+    const {user,loading} = useContext(AuthContext)
     const [services, setServices] = useState([]);
 
     const handleAddService = event=>{
@@ -55,9 +56,18 @@ const AllService = () => {
         .then((data) => setServices(data));
     }, [services]);
 
+    if (loading) {
+      return (
+        <div className='text-center'>
+          <button className="btn btn-outline loading">loading...</button>
+        </div>
+      );
+    }
+
     return (
       <div>
         <div className="text-center">
+            
           <h1 className="text-5xl my-6 font-semibold text-orange-500">
             Our <span className="text-lime-600">Service</span>
           </h1>

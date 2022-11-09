@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Typewriter from "typewriter-effect";
 import banner from '../../assets/images/section-side-banner.gif'
 import chicken from '../../assets/images/chicken.jpg'
@@ -6,9 +6,18 @@ import { Fade } from "react-reveal";
 import Wobble from "react-reveal/Wobble";
 import Jello from "react-reveal/Jello";
 import Services from '../Services/Services';
+import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 
 const Home = () => {
+    const {loading} = useContext(AuthContext);
+    if (loading) {
+      return (
+        <div className="text-center">
+          <button className="btn btn-outline loading">loading...</button>
+        </div>
+      );
+    }
     return (
       <div>
         {/* home header top section */}

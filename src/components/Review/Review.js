@@ -4,7 +4,7 @@ import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import Swal from "sweetalert2";
 
 const Review = () => {
-    const {user} = useContext(AuthContext)
+    const {user, loading} = useContext(AuthContext)
     const {_id, title, price, img, rating, description} = useLoaderData();
 
     const handlePlaceReview = event =>{
@@ -21,6 +21,7 @@ const Review = () => {
         const review = {
             service: _id,
             serviceName: title,
+            serviceImg: img,
             price,
             user: name,
             email: email,
@@ -47,6 +48,14 @@ const Review = () => {
         .catch(err => console.error(err));
 
 
+    }
+
+    if (loading) {
+      return (
+        <div className="text-center">
+          <button className="btn btn-outline loading">loading...</button>
+        </div>
+      );
     }
 
     return (

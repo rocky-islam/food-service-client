@@ -11,26 +11,31 @@ const AuthProvider = ({children}) => {
 
     // user create with email password
     const createUser = (email, password) =>{
+        setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
     };
     // update name photo
      const updateUserProfile = (profile) => {
+        setLoading(true);
        return updateProfile(auth.currentUser, profile);
      };
 
     //  sign in with email password
      const signIn = (email, password) => {
+        setLoading(true);
        return signInWithEmailAndPassword(auth, email, password);
      };
 
     //  google login
     const providerLogin = (provider) => {
+        setLoading(true);
       return signInWithPopup(auth, provider);
     };
 
 
     //  log out
      const logOut = () => {
+        setLoading(true);
        return signOut(auth);
      };
 
@@ -38,6 +43,7 @@ const AuthProvider = ({children}) => {
         const unsubscribe = onAuthStateChanged(auth, currentUser =>{
             console.log(currentUser);
             setUser(currentUser);
+            setLoading(false)
             
         });
         return () => {
