@@ -1,17 +1,16 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import './App.css';
-import Blog from './components/Blog/Blog';
-import ErrorPage from './components/ErrorPage/ErrorPage';
-import Home from './components/Home/Home';
-import Login from './components/Login/Login';
-import Main from './components/Main/Main';
-import MyReview from './components/MyReview/MyReview';
-import PrivateRoute from './components/PrivateRoute/PrivateRoute';
-import Review from './components/Review/Review';
-import AllService from './components/Services/AllService';
-import SignUp from './components/SignUp/SignUp';
-import UpdateReview from './components/UpdateReview/UpdateReview';
-
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import "./App.css";
+import Blog from "./components/Blog/Blog";
+import ErrorPage from "./components/ErrorPage/ErrorPage";
+import Home from "./components/Home/Home";
+import Login from "./components/Login/Login";
+import Main from "./components/Main/Main";
+import MyReview from "./components/MyReview/MyReview";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import Review from "./components/Review/Review";
+import AllService from "./components/Services/AllService";
+import SignUp from "./components/SignUp/SignUp";
+import UpdateReview from "./components/UpdateReview/UpdateReview";
 
 function App() {
   const router = createBrowserRouter([
@@ -37,13 +36,19 @@ function App() {
         },
         {
           path: "/services",
-          element: <AllService></AllService>,
+          element: (
+            <PrivateRoute>
+              <AllService></AllService>
+            </PrivateRoute>
+          ),
         },
         {
           path: "/services/:id",
           element: <Review></Review>,
           loader: ({ params }) =>
-            fetch(`http://localhost:5000/services/${params.id}`),
+            fetch(
+              `https://food-service-server-orpin.vercel.app/services/${params.id}`
+            ),
         },
         {
           path: "/reviews",
@@ -61,7 +66,9 @@ function App() {
             </PrivateRoute>
           ),
           loader: ({ params }) =>
-            fetch(`http://localhost:5000/reviews/${params.id}`),
+            fetch(
+              `https://food-service-server-orpin.vercel.app/reviews/${params.id}`
+            ),
         },
       ],
     },

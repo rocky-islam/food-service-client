@@ -1,4 +1,32 @@
-# Getting Started with Create React App
+# Food-Service
+
+## Developer: Md. Rocky islam
+
+#### Live Site Link: [Learning-hub](https://food-service-20f8d.web.app/"Food-service") and https://food-service-20f8d.web.app/
+
+### Features and functionality
+
+- Firebase authentication
+- MongoDB Server side
+- Clickable services
+- Private route
+- React-Photo-viewer
+- Responsive design
+- Review System
+- User Also rate Services
+- Editable review
+- User can update delete his own review
+
+### Technologies
+
+- React js
+- Tailwind
+- DasiyUi
+- React icon
+- React Router Dom
+- Firebase
+- React photo viewer
+- sweetAlert2
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

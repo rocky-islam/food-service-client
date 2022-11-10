@@ -7,7 +7,7 @@ import Wobble from "react-reveal/Wobble";
 import Jello from "react-reveal/Jello";
 import Services from '../Services/Services';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
-import useTitle from '../../hooks/useTitle';
+// import useTitle from '../../hooks/useTitle';
 
 
 const Home = () => {
