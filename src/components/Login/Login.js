@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import loginLogo from '../../assets/images/sign-up.gif'
 import { FaGoogle } from "react-icons/fa";
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
@@ -7,6 +7,12 @@ import { GoogleAuthProvider } from 'firebase/auth';
 
 const Login = () => {
     const { signIn, providerLogin } = useContext(AuthContext);
+
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const from = location.state?.from?.pathname || '/';
+
     const handleLogin = event =>{
         event.preventDefault();
         const form = event.target;
@@ -18,7 +24,9 @@ const Login = () => {
         .then(result =>{
             const user = result.user;
             console.log(user);
+            navigate(from, {replace: true});
             form.reset();   
+            
         })
         .catch(error => console.error(error));   
     }
