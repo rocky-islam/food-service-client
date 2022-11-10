@@ -1,11 +1,20 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import Swal from "sweetalert2";
+import ProductReviewAll from './ProductReviewAll';
 
 const Review = () => {
-    const {user, loading} = useContext(AuthContext)
+    const {user, loading} = useContext(AuthContext);
     const {_id, title, price, img, rating, description} = useLoaderData();
+    const [reviews, setReviews] = useState([]);
+
+
+    useEffect(() => {
+      fetch(`http://localhost:5000/reviews?service=${_id}`)
+        .then((res) => res.json())
+        .then((data) => setReviews(data));
+    }, [_id]);
 
     const handlePlaceReview = event =>{
         event.preventDefault();
@@ -43,6 +52,7 @@ const Review = () => {
             if(data.acknowledged){
                 Swal.fire("Review Placed done!", "", "success");
                 form.reset();
+                
             }
         })
         .catch(err => console.error(err));
@@ -150,6 +160,17 @@ const Review = () => {
             </div>
           </div>
         </div>
+        {/* show reviews */}
+        <div>
+          <h1>this is review {reviews.length}</h1>
+          {
+            reviews.map(allReview => <ProductReviewAll
+              key={allReview._id}
+              allReview={allReview}
+            ></ProductReviewAll>)
+          }
+        </div>
+        {/* show reviews */}
       </div>
     );
 };
