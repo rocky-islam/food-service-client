@@ -95,66 +95,77 @@ const Review = () => {
           </div>
           {/* Review Now */}
           <div>
-            <h1 className="text-center text-2xl font-medium">Review Now For <span className='text-orange-500'> {title}</span></h1>
+            <h1 className="text-center text-2xl font-medium">
+              Review Now For <span className="text-orange-500"> {title}</span>
+            </h1>
             <div>
               <div className="w-full">
                 <div className="flex justify-center w-full">
-                    {/* from */}
-                  <form onSubmit={handlePlaceReview} className=' w-1/2'>
-                    <div className="form-control">
-                      <label className="label">
-                        <span className="label-text">Name</span>
-                      </label>
-                      <input
-                        type="text"
-                        name="name"
-                        placeholder="Type here"
-                        defaultValue={user?.displayName}
-                        className="input input-bordered input-primary w-full "
-                        readOnly
-                      />
-                    </div>
-                    <div className="form-control">
-                      <label className="label">
-                        <span className="label-text">Photo Url</span>
-                      </label>
-                      <input
-                        type="text"
-                        name="photoURL"
-                        defaultValue={user?.photoURL}
-                        readOnly
-                        placeholder="Type here"
-                        className="input input-bordered input-primary w-full"
-                      />
-                    </div>
-                    <div className="form-control">
-                      <label className="label">
-                        <span className="label-text">Rating</span>
-                      </label>
-                      <input
-                        type="text"
-                        name="rating"
-                        placeholder="Rating"
-                        className="input input-bordered input-primary w-full "
-                        required
-                      />
-                    </div>
-                    <div className="form-control">
-                      <label className="label">
-                        <span className="label-text">Your Review</span>
-                      </label>
-                      <textarea
-                        type="text"
-                        name="review"
-                        placeholder="Your Review"
-                        className="textarea textarea-bordered textarea-primary md:h-24 w-full"
-                        required
-                      />
-                    </div>
-                    <button type="submit" className="btn my-4 px-5">
-                      SubMit
-                    </button>
-                  </form>
+                  {/* from */}
+
+                  {user?.uid ? (
+                    <>
+                      <form onSubmit={handlePlaceReview} className=" w-1/2">
+                        <div className="form-control">
+                          <label className="label">
+                            <span className="label-text">Name</span>
+                          </label>
+                          <input
+                            type="text"
+                            name="name"
+                            placeholder="Type here"
+                            defaultValue={user?.displayName}
+                            className="input input-bordered input-primary w-full "
+                            readOnly
+                          />
+                        </div>
+                        <div className="form-control">
+                          <label className="label">
+                            <span className="label-text">Photo Url</span>
+                          </label>
+                          <input
+                            type="text"
+                            name="photoURL"
+                            defaultValue={user?.photoURL}
+                            readOnly
+                            placeholder="Type here"
+                            className="input input-bordered input-primary w-full"
+                          />
+                        </div>
+                        <div className="form-control">
+                          <label className="label">
+                            <span className="label-text">Rating</span>
+                          </label>
+                          <input
+                            type="text"
+                            name="rating"
+                            placeholder="Rating"
+                            className="input input-bordered input-primary w-full "
+                            required
+                          />
+                        </div>
+                        <div className="form-control">
+                          <label className="label">
+                            <span className="label-text">Your Review</span>
+                          </label>
+                          <textarea
+                            type="text"
+                            name="review"
+                            placeholder="Your Review"
+                            className="textarea textarea-bordered textarea-primary md:h-24 w-full"
+                            required
+                          />
+                        </div>
+                        <button type="submit" className="btn my-4 px-5">
+                          SubMit
+                        </button>
+                      </form>
+                    </>
+                  ) : (
+                    <>
+                      <h1 className='text-3xl text-center'>Please login for Review</h1>
+                    </>
+                  )}
                 </div>
               </div>
             </div>
@@ -162,13 +173,13 @@ const Review = () => {
         </div>
         {/* show reviews */}
         <div>
-          <h1>this is review {reviews.length}</h1>
-          {
-            reviews.map(allReview => <ProductReviewAll
+          {/* <h1>this is review {reviews.length}</h1> */}
+          {reviews.map((allReview) => (
+            <ProductReviewAll
               key={allReview._id}
               allReview={allReview}
-            ></ProductReviewAll>)
-          }
+            ></ProductReviewAll>
+          ))}
         </div>
         {/* show reviews */}
       </div>
