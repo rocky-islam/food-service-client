@@ -26,7 +26,7 @@ const Services = () => {
             <ServiceCard key={service._id} service={service}></ServiceCard>
           ))}
         </div>
-        <div className='text-center'>
+        <div className='text-center my-8'>
             <Link to='/services' className='btn bg-orange-500 border-none hover:bg-lime-600 px-10'>See All</Link>
         </div>
       </div>
