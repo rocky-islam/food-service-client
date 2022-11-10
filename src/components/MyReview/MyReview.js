@@ -43,9 +43,22 @@ const MyReview = () => {
 
     return (
       <div>
-        <h1 className="text-3xl text-center my-2">
-          You have {reviews.length} review
-        </h1>
+        <div className="text-center">
+          {reviews.length === 0 ? (
+            <>
+              <h1 className="text-3xl text-center my-2">
+                You have No Review
+              </h1>
+            </>
+          ) : (
+            <>
+              <h1 className="text-3xl text-center my-2">
+                You have {reviews.length} review
+              </h1>
+            </>
+          )}
+        </div>
+
         <div>
           <div className="">
             <div className="overflow-x-auto w-full">

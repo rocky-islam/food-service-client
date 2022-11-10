@@ -163,7 +163,7 @@ const Review = () => {
                     </>
                   ) : (
                     <>
-                      <h1 className='text-3xl text-center'>Please login for Review</h1>
+                      <h1 className='text-3xl text-center'>Please login for Add Review</h1>
                     </>
                   )}
                 </div>
