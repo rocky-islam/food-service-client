@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import loginLogo from "../../assets/images/sign-up.gif";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
+import useTitle from "../../hooks/useTitle";
 
 const SignUp = () => {
     const { createUser, updateUserProfile } = useContext(AuthContext);
+    useTitle('SignUp')
   const handleSignUp = (event) => {
     event.preventDefault();
     const form = event.target;

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import useTitle from '../../hooks/useTitle';
 import ServiceCard from './ServiceCard';
 
 const Services = () => {
-
+  useTitle('Home - Services');
     const [services, setServices] = useState([]);
 
     useEffect( () =>{

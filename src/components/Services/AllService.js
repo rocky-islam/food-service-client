@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import ServiceCard from './ServiceCard';
@@ -74,9 +75,18 @@ const AllService = () => {
           {/* modal */}
           <div>
             {/* The button to open modal */}
-            <label htmlFor="my-modal-3" className="btn">
-              Add Services
+            {
+              user?.uid ?
+              <>
+              <label htmlFor="my-modal-3" className="btn">
+              Add More Services
             </label>
+              </>
+              :
+              <>
+              <h1 className='text-2xl'>Please <Link to='/login' className='text-lime-600'>Login</Link> to Add more service</h1>
+              </>
+            }
 
             {/* Put this part before </body> tag */}
             <input type="checkbox" id="my-modal-3" className="modal-toggle" />

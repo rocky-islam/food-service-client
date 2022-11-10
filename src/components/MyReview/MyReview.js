@@ -1,11 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import useTitle from '../../hooks/useTitle';
 import ReviewRow from './ReviewRow';
 
 const MyReview = () => {
     const {user, loading} = useContext(AuthContext);
     const [reviews, setReviews] = useState([]);
-
+    useTitle("My Reviews")
     
 
     useEffect( () =>{
@@ -24,7 +26,12 @@ const MyReview = () => {
           .then((data) => {
             console.log(data);
             if (data.deletedCount > 0){
-                alert('delete Successfully');
+                Swal.fire({
+                  position: "top-center",
+                  icon: "success",
+                  title: "Review Deleted Successful",
+                  showConfirmButton: true,
+                });
                 const remaining = reviews.filter(rvew => rvew._id !== id);
                 setReviews(remaining);
             }

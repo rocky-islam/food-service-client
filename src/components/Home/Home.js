@@ -7,10 +7,12 @@ import Wobble from "react-reveal/Wobble";
 import Jello from "react-reveal/Jello";
 import Services from '../Services/Services';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import useTitle from '../../hooks/useTitle';
 
 
 const Home = () => {
     const {loading} = useContext(AuthContext);
+    // useTitle('Home')
     if (loading) {
       return (
         <div className="text-center">

@@ -10,6 +10,7 @@ import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Review from './components/Review/Review';
 import AllService from './components/Services/AllService';
 import SignUp from './components/SignUp/SignUp';
+import UpdateReview from './components/UpdateReview/UpdateReview';
 
 
 function App() {
@@ -45,9 +46,19 @@ function App() {
             fetch(`http://localhost:5000/services/${params.id}`),
         },
         {
-          path: '/reviews',
-          element: <PrivateRoute><MyReview></MyReview></PrivateRoute>
-        }
+          path: "/reviews",
+          element: (
+            <PrivateRoute>
+              <MyReview></MyReview>
+            </PrivateRoute>
+          ),
+        },
+        {
+          path: "/update/:id",
+          element: <UpdateReview></UpdateReview>,
+          loader: ({ params }) =>
+            fetch(`http://localhost:5000/reviews/${params.id}`),
+        },
       ],
     },
     {
